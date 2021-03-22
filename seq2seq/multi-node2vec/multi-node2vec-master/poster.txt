@@ -1,0 +1,25 @@
+The rest of this manuscript is arranged in the following order.
+In Section 1.1, we provide an overview of network neuroscience and discuss how the multi node 2vec algorithm has the potential to provide breakthrough insights in this field.
+In the second section, we discuss the related work of complex networks and other feature engineering techniques.
+We describe the multi node 2vec algorithm in detail in sections 3 and 4.
+We regard problem 1 as a maximum likelihood problem and discuss how to identify the multi-layer neighborhood in multi-layer networks.
+Then we study the approximation properties of the algorithm for the 2dec network, and show that the algorithm is fast.
+In addition, we also show the exact relationship between multi node 2vec and node2vec and deepwalk algorithms.
+In Section 6, we apply multi node 2vec to resting state fMRI case study and compare its performance with modern methods.
+In Section 7, we further study the performance of multi node 2vec on the test bench of simulated network.
+Finally, we discuss areas for future work in Section 8.
+In fact, like node2vec, it's random walk, only adding walking parameters to swim in different neural networks..
+1. To construct a multi-layer representation of this dataset, we use a previously validated atlas [46], which specifies 264 spheres with a radius of 8 mm,
+These spheres constitute our 264 regions of interest (ROI).
+2. What is the collected data like
+We average the fMRI time series of all voxels in each ROI and get 264 time series for each participant.
+For each time series, we regressed 6 motion parameters (used to explain head motion), 4 parameters corresponding to CSF and 4 parameters corresponding to white matter.
+3. These steps have been proved to reduce the bias and noise in the data [15].
+Finally, for each participant, we associate the 264 time series with each other to generate a 264 × 264 correlation matrix for each participant.
+4. Then, we thresholded the correlation matrix with a threshold of 0.10 (i.e. maintaining the top 10% of the strongest connections) to build a multi-layer network (74 layers and 264 unique nodes),
+Multi node 2vec is applied to it.
+5. The functional map also provides a label for each ROI (node) in the network, which specifies the functional subnet containing ROI [46].
+6. For all uses of multi node 2vec, we set K = 10 and d = 100 to generate the feature matrix of dimension 264 x 100. We sample each node's s s = 52 neighborhoods.
+t p = 1, and q = 0.5
+We provide a summary of subnet tags in Table 1. Based on the label of ROI subnet, the application of multi node 2vec in visualization and the machine learning task of clustering and classification are studied.
+The public code of the multi node 2vec algorithm and all the codes found in this section and section 7 are provided in the supplementary material.
