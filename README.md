@@ -49,7 +49,7 @@ vocab_file = './data/dl-data/couplet/vocabs'
 model_dir = './data/dl-data/models'
 def inferTheStr(in_str):
     if len(in_str) == 0 or len(in_str) > 50:
-        output = u'您的输入太长了'
+        output = u'Your input is too long'
     else:
         output = m.infer(' '.join(in_str))
     return output
