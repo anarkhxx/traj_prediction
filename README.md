@@ -11,48 +11,23 @@ The paper can be visited at https://ieeexplore.ieee.org/abstract/document/931801
 
 # Data Preparation
    
-1.1 src/data/dl-data/couplet/train/in.txt  ==>Base station label trajectory in the first half of training set
+(1)src/distance_cells/out1.txt  This file contains all the cell-id trajectories.
 
-1.2 src/data/dl-data/couplet/train/out.txt  ==>Base station label track in the second half of training set
+(2)src/distance_cells/out1_train.txt  This file contains the cell-id trajectories used for learning the cell-id embeddings.
 
-1.3 src/data/dl-data/couplet/test/intest.txt  ==>Label trace of base station in the first half of test set1.3
+(3)src/data/dl-data/couplet/vocabs  This file contains all the unique cell-ids.
 
-1.4 src/data/dl-data/couplet/test/outtest.txt  ==>Label trace of base station in the second half of test set
+(4)src/data/dl-data/couplet/train/in.txt  This file contains all the input sub-trajectories of the training samples.
 
-1.5 src/data/dl-data/couplet/vocabs  ==> Label of all cellular base stations
+(5)src/data/dl-data/couplet/train/out.txt  This file contains all the output sub-trajectories of the training samples.
 
-1.6 src/distance_cells/out1.txt  ==> Label trace of original cellular base station
+(6)src/data/dl-data/couplet/test/intest.txt  This file contains all the input sub-trajectories of the testing samples.
 
-1.7 src/distance_cells/out1_train.txt ==>Part of training set of original cellular base station label trajectory
-
+(7)src/data/dl-data/couplet/test/outtest.txt  This file contains all the output sub-trajectories of the testing samples.
 
 ### Data format description
-`t is the trajectory, c is the base station`
 
-(1)The data formats of 1.1-1.4 are described below：
-
-      ... c1 c2 c3 c4 c5 ...
-      ... c6 c7 c8 c9 c10 ...
-      ...   ...   ....   ...  
-
- (2) The data formats of 1.5 are described below：
- 
-       <s>
-       </s>
-       c1
-       c2
-       ...
-       cn
- 
- (3)The data format of 1.6-1.7 is as follows. The data here is original, and the training and testing are segmented.
- 
-       t1c1 t1c2 t1c3 t1c4 ...
- 
-       t2c1 t2c2 t2c3 t2c4 ...
-        
-       t3c1 t3c2 t3c3 t3c4 ...
-
-       ... ...  ...   ... ...    
+The basic component in all the data files is cell-id defined in the format of “C10000A20000”, where 10000 is the CellID (Cell Tower ID) and 20000 is the LAC (Location Area Code).
 
 # Run the Project
 
@@ -66,5 +41,7 @@ The paper can be visited at https://ieeexplore.ieee.org/abstract/document/931801
 
       python forqatest.py     
   
-  The results are output in src/ result.txt  ==> This part forqatest.py The code can be modified.
+The input sub-trajectories can be configured in the code, with an example as follows.
+
+The results are output in src/result.txt
 
